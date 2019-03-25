@@ -1,0 +1,108 @@
+body {
+  padding-top: 5rem;
+}
+
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+nav a:hover, nav navbar-brand {
+    color: white;
+}
+
+nav a:active {
+    color: white;
+}
+
+        /* GameChooser styling */
+#gc table {
+    display: inline-block;
+}
+
+#gc table, th {
+    text-align: left;
+    font-size: xx-large;
+}
+
+#gc table,tr,td {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+		pointer-events: none;
+}
+#gc table,tr,td:active {
+    box-shadow: 0 0 8px 0 #808080;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+}
+        /* GameChooser styling end */
+
+/*
+		Memorygame styling
+												*/
+.memgame {
+    align-content: center;
+		transition: 1s ease;
+}
+
+.memgame .row div {
+	background-color: lightblue;
+	box-shadow: 0 0 1px 1px #808080;
+	text-align: center;
+	height: 80px;
+}
+
+.memgame .row div:active {
+	background-color: white;
+}
+
+.memgame span {
+	opacity: 1;
+	font-size: 25px;
+	text-align: center;
+	pointer-events: none;
+}
+
+/* Memgame2 */
+
+@keyframes rotate {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+@-webkit-keyframes rotate {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+@keyframes shine {
+	from { font-size-adjust: 16px; }
+	to { font-size-adjust: 25px;}
+}
+
+@-webkit-keyframes shine {
+	from { font-size-adjust: 16px; }
+	to { font-size-adjust: 25px;}
+}
+
+@keyframes shake {
+	10%, 90% {transform: translate3d(-1px, 0, 0);}
+	
+	20%, 80% {transform: translate3d(2px, 0, 0);}
+  
+	30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
+  
+	40%, 60% {transform: translate3d(4px, 0, 0);}
+  }
+
+  @-webkit-keyframes shake {
+	10%, 90% {transform: translate3d(-1px, 0, 0);}
+	
+	20%, 80% {transform: translate3d(2px, 0, 0);}
+  
+	30%, 50%, 70% {transform: translate3d(-4px, 0, 0);}
+  
+	40%, 60% {transform: translate3d(4px, 0, 0);}
+  }
+
+        /* Memorygame styling end */

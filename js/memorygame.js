@@ -54,11 +54,16 @@ class memoryGames {
 } // End of memoryGames class
 
 function rules() { // Game rules
+
+    // Pushes current picks through mouseclick eventlistener to a choice array and a pick array
+    // Choice-array gets number-values, pick-array by some magic knows specifically which box is picked
+    // Compare the pick-array values to make sure that you can't pick the same box twice to cheat the game
+
     choice.push(this.textContent);
     pick.push(this);
 
     // Sets style of clicked box to visible
-    // and disables pointer-events
+    // and disables pointer-events so you cant click the same box twice
     this.childNodes[1].style = "opacity: 1";
     this.style = "pointer-events: none";
 
@@ -71,6 +76,8 @@ function rules() { // Game rules
     // and not the same pick twice(CORRECT CHOICE)
     if (choice.length == 2 && choice[0] == choice[1] && pick[0] != pick[1]) {
         console.log("Correct");
+
+        // Increment relevant counters
         counter++;
         rightAnswer++;
         correct++;
@@ -79,6 +86,7 @@ function rules() { // Game rules
         right.textContent = correct;
         total.textContent = wrongAnswer + correct;
 
+        // Roll rotate-animation on correct picks through picks-array
         for (i = 0; i < pick.length; i++) {
             pick[i].removeEventListener("click", rules);
             pick[i].childNodes[1].removeAttribute("style");
@@ -86,7 +94,7 @@ function rules() { // Game rules
         }
 
         // console.log([i]);
-        // console.log([pick]);
+        console.log([pick]);
 
         choice = [];
         pick = [];
@@ -103,6 +111,8 @@ function rules() { // Game rules
         wrong.textContent = wrongAnswer;
         total.textContent = wrongAnswer + correct;
 
+
+        // Shake picks for being wrong choice and empty arrays
         setTimeout(function () {
             for (i = 0; i < pick.length; i++) {
                 pick[i].removeAttribute("style");
@@ -116,7 +126,7 @@ function rules() { // Game rules
         }, 1);
     }
 
-    //6 matching numbers picked, end of game
+    // 6 matching numbers picked, end of game
     if (correct == 6) {
         // Reset variables
         counter = 1;
@@ -140,6 +150,7 @@ function rules() { // Game rules
         }
     }
 
+    // Roll winner animation in sequence with a small delay
     let j = 0;
     function myLoop() {
         setTimeout(function () {
@@ -152,6 +163,7 @@ function rules() { // Game rules
     }
 } //End of rules()
 
+// Shuffle function for shuffling numbers-array
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {

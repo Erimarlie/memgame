@@ -8,27 +8,32 @@ const total = document.getElementById("total");
 
 let pick = [];
 let choice = [];
+let correct = [];
 let counter = 1;
 let wrongAnswer = 0;
 let rightAnswer = 0;
-let correct = [];
 const numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 class memoryGames {
+    // Constructs and initializes default state of game
     constructor() {
         // Shuffles numbers array
         shuffle(numbers);
 
+        // Reset attempt counters
         wrong.textContent = 0;
         right.textContent = 0;
         total.textContent = 0;
+
         // console.log(choice.length);
         // console.log(item);
         // console.log(pick.length);
         // console.log(correct.length);
+
         console.log("Game is on");
 
-        // Adds numbers, removes styles and adds eventlisteners
+        // Adds numbers and displays in boxes, resets all styles 
+        // and adds eventlisteners to all boxes
         for (let i = 0; i < numbers.length; i++) {
             numCon[i].removeAttribute("style");
             item[i].removeAttribute("style");
@@ -45,18 +50,21 @@ class memoryGames {
             }
         }, 5);
     }
-} // End of memoryGame class
+} // End of memoryGames class
 
-function rules() {
+function rules() { // Game rules
     choice.push(this.textContent);
     pick.push(this);
+
+    // Sets style of clicked box to visible
+    // and disables pointer-events
+    this.childNodes[1].style = "opacity: 1";
+    this.style = "pointer-events: none";
+
     // console.log(choice);
     // console.log(choice.length);
     // console.log(pick);
-    console.log("Counter " + counter);
-
-    this.childNodes[1].style = "opacity: 1";
-    this.style = "pointer-events: none";
+    // console.log("Counter " + counter);
 
     // 2 choices and matching numbers and not the same pick twice (CORRECT CHOICE)
     if (choice.length == 2 && choice[0] == choice[1] && pick[0] != pick[1]) {
@@ -74,13 +82,16 @@ function rules() {
             pick[i].childNodes[1].removeAttribute("style");
             pick[i].style = "pointer-events: none; animation: rotate 1s; -webkit-animation: rotate 1s ; -webkit-animation: rotate 1s;";
         }
+
         // console.log([i]);
         // console.log([pick]);
+
         choice = [];
         pick = [];
     }
 
-    // 2 choices and not matching numbers (WRONG CHOICE)
+    // Check choice-array for 2 numbers, 
+    // and they do not match(WRONG CHOICE)
     if (choice.length == 2 && choice[0] != choice[1]) {
         console.log("Wrong");
         counter++;
@@ -103,15 +114,19 @@ function rules() {
         }, 1);
     }
 
-    //6 matching numbers picked
+    //6 matching numbers picked, end of game
     if (correct == 6) {
+        // Reset variables
         counter = 1;
         wrongAnswer = 0;
         correct = 0;
+
         console.log("Game is over!");
         console.log("Correct attempts: " + correct)
         console.log("Wrong attempts: " + wrongAnswer);
         console.log("Total attempts:" + (wrongAnswer + rightAnswer));
+
+        // Resets style of boxes
         for (i = 0; i < 12; i++) {
             // console.log("game over loop fired");
             numCon[i].removeAttribute("style");

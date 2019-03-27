@@ -58,7 +58,6 @@ function rules() { // Game rules
     // Pushes current picks through mouseclick eventlistener to a choice array and a pick array
     // Choice-array gets number-values, pick-array by some magic knows specifically which box is picked
     // Compare the pick-array values to make sure that you can't pick the same box twice to cheat the game
-
     choice.push(this.textContent);
     pick.push(this);
 
@@ -94,7 +93,7 @@ function rules() { // Game rules
         }
 
         // console.log([i]);
-        console.log([pick]);
+        // console.log([pick]);
 
         choice = [];
         pick = [];

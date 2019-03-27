@@ -6,7 +6,6 @@ const right = document.getElementById("correctCount");
 const wrong = document.getElementById("wrongCount");
 const total = document.getElementById("total");
 
-let branchtest;
 let pick = [];
 let choice = [];
 let correct = [];

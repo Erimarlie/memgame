@@ -6,6 +6,7 @@ const right = document.getElementById("correctCount");
 const wrong = document.getElementById("wrongCount");
 const total = document.getElementById("total");
 
+let branchtest;
 let pick = [];
 let choice = [];
 let correct = [];
@@ -66,7 +67,8 @@ function rules() { // Game rules
     // console.log(pick);
     // console.log("Counter " + counter);
 
-    // 2 choices and matching numbers and not the same pick twice (CORRECT CHOICE)
+    // 2 choices made, and matching numbers in choice-array
+    // and not the same pick twice(CORRECT CHOICE)
     if (choice.length == 2 && choice[0] == choice[1] && pick[0] != pick[1]) {
         console.log("Correct");
         counter++;
